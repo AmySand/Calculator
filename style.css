@@ -1,8 +1,13 @@
-calculator{
+#calculator{
     margin: auto;
+    margin-top: 15px;
 }
 
 #calcFace{
     height: 150px;
     width: 18rem;
+}
+
+.card-body{
+    background-color: rgb(200,200,200);
 }
