@@ -13,10 +13,17 @@ var clearAll = document.querySelector("#clearAll");
 nums.forEach(function(val){
     val.addEventListener("click", function(){
 
-        if(equation.length > 2){
-            mathCalc(equation[1]);
+//        if(equation.length > 2){
+//            mathCalc(equation[1]);
+//        }
+        
+        if(currentNum === 0){
+            currentNum = this.value;
         }
-        currentNum = currentNum + this.value;
+        
+        else{
+            currentNum = currentNum + this.value;
+        }
         
         if(equation.length == 2){
             document.querySelector("#calcFace").innerHTML = equation[0] + " " + equation[1] + " " + currentNum;
@@ -32,17 +39,21 @@ nums.forEach(function(val){
 //overwrite operator
 //put the thing in the DOM
 
-//This is what happens when you click =, -, *, or /
+//This is what happens when you click +, -, *, or /
 operators.forEach(function(val){
     val.addEventListener("click", function(){
         var intNum = parseInt(currentNum);
         equation.push(intNum);
+        if(equation.length > 2){
+            mathCalc(equation[1]);
+        }
         equation.push(this.value);
         currentNum = "";
         document.querySelector("#calcFace").innerHTML += " " + equation[1];
     });
 });
 
+//We call this function when we actually want to do math
 function mathCalc(x){
     switch(x){
         case "+": equation[0] = equation[0] + equation[2];
@@ -53,10 +64,10 @@ function mathCalc(x){
             break;
         case "/": equation[0] = equation[0] / equation[2];
     }
-    console.log(equation[0]);
+//    console.log(equation[0]);
     equation.pop();
     equation.pop();
-    console.log(equation);
+//    console.log(equation);
 }
 
 //This is what happens when you click =
@@ -64,6 +75,7 @@ equals.addEventListener("click", function(){
     equation.push(parseInt(currentNum));
     mathCalc(equation[1]);
     document.querySelector("#calcFace").innerHTML = equation[0];
+    console.log(equation);
 });
 
 //This is what happens when you click Clear
