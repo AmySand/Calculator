@@ -75,6 +75,8 @@ equals.addEventListener("click", function(){
     equation.push(parseInt(currentNum));
     mathCalc(equation[1]);
     document.querySelector("#calcFace").innerHTML = equation[0];
+    currentNum = equation[0];
+    equation.pop();
     console.log(equation);
 });
 
