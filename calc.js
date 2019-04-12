@@ -47,8 +47,9 @@ operators.forEach(function(val){
         if(equation.length > 2){
             mathCalc(equation[1]);
         }
-        equation.push(this.value);
-        currentNum = "";
+        equation[1] = this.value;
+        console.log(equation);
+        currentNum = 0;
         document.querySelector("#calcFace").innerHTML += " " + equation[1];
     });
 });
