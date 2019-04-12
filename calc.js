@@ -83,7 +83,12 @@ equals.addEventListener("click", function(){
 //This is what happens when you click Clear
 clear.addEventListener("click", function(){
     currentNum = " ";
-    document.querySelector("#calcFace").innerHTML = equation[0] + " " + equation[1] + " " + currentNum;
+    if(typeof equation[0] !== "undefined" && typeof equation[1] !== "undefined"){
+        document.querySelector("#calcFace").innerHTML = equation[0] + " " + equation[1] + " " + currentNum;
+    }
+    else{
+        document.querySelector("#calcFace").innerHTML = " ";
+    }
 });
 
 //This is what happens when you click Clear All
